@@ -310,7 +310,7 @@ function sd() {
     const d2 = r[k] || r['default']
     const s = m === 'POST' ? 201 : m === 'DELETE' ? 200 : 200
     rp.innerHTML = '<span style="color:var(--ts)">// HTTP ' + s + ' ' + {200:'OK',201:'Created',404:'Not Found'}[s] + '</span>\n' +
-      JSON.stringify(d2, null, 2).replace(/"([^"]+)":/g, '<span style="color:#00d4aa">"$1"</span>:').replace(/"([^"]+)"/g, '<span style="color:#febc2e">"$1"</span>').replace(/\b(true|false|null)\b/g, '<span style="color:#8b5cf6">$1</span>').replace(/\b(\d+)\b/g, '<span style="color:#ff5f57">$1</span>')
+      JSON.stringify(d2, null, 2).replace(/("(?:[^"\\]|\\.)*")(\s*:\s*)?|(true|false|null)|(-?\d+(?:\.\d+)?(?:[eE][+-]?\d+)?)/g, (a,k,c,b,n) => k ? c ? '<span style="color:#00d4aa">' + k + '</span>' + c : '<span style="color:#febc2e">' + k + '</span>' : b ? '<span style="color:#8b5cf6">' + b + '</span>' : n ? '<span style="color:#ff5f57">' + n + '</span>' : a)
   }, 800 + Math.random() * 400)
 }
 document.getElementById('ep').onkeydown = e => { if(e.key === 'Enter') sd() }
