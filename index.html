@@ -3,65 +3,61 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>CloudFounder - Cloud-Native SaaS Solutions</title>
+  <title>CloudFounder - Serverless API Platform</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
   <style>
     *{margin:0;padding:0;box-sizing:border-box}
-    :root{--bg:#0a0a0f;--bg2:#12121a;--card:#1a1a24;--a:#ff9900;--ag:rgba(255,153,0,0.3);--t:#fff;--ts:#a0a0b0;--b:#2a2a3a;--g1:linear-gradient(135deg,#ff9900,#ff6600);--g2:linear-gradient(135deg,#00d4aa,#00b4d8)}
+    :root{--bg:#0a0a0f;--bg2:#12121a;--card:#1a1a24;--a:#ff9900;--ag:rgba(255,153,0,0.3);--t:#fff;--ts:#a0a0b0;--b:#2a2a3a;--g1:linear-gradient(135deg,#ff9900,#ff6600)}
     html{scroll-behavior:smooth}
     body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--t);overflow-x:hidden;line-height:1.6}
     .bg{position:fixed;inset:0;background-image:linear-gradient(rgba(255,153,0,0.03) 1px,transparent 1px),linear-gradient(90deg,rgba(255,153,0,0.03) 1px,transparent 1px);background-size:50px 50px;z-index:0;animation:m 20s linear infinite}
     @keyframes m{0%{transform:translate(0,0)}100%{transform:translate(50px,50px)}}
     .orb{position:fixed;border-radius:50%;filter:blur(80px);opacity:0.4;animation:f 15s ease-in-out infinite;z-index:0}
-    .o1{width:400px;height:400px;background:var(--a);top:10%;left:10%;animation-delay:0s}
-    .o2{width:300px;height:300px;background:#00d4aa;bottom:20%;right:10%;animation-delay:-5s}
+    .o1{width:400px;height:400px;background:var(--a);top:-10%;left:10%;animation-delay:0s}
+    .o2{width:300px;height:300px;background:#00d4aa;bottom:10%;right:10%;animation-delay:-5s}
     @keyframes f{0%,100%{transform:translate(0,0) scale(1)}33%{transform:translate(50px,-50px) scale(1.1)}66%{transform:translate(-30px,30px) scale(0.9)}}
     nav{position:fixed;top:0;width:100%;padding:1rem 2rem;display:flex;justify-content:space-between;align-items:center;z-index:1000;background:rgba(10,10,15,0.8);backdrop-filter:blur(20px);border-bottom:1px solid var(--b)}
-    .l{font-size:1.5rem;font-weight:800;background:var(--g1);-webkit-background-clip:text;-webkit-text-fill-color:transparent;display:flex;align-items:center;gap:0.5rem}
-    .l svg{width:28px;height:28px;fill:var(--a)}
+    .l{font-size:1.4rem;font-weight:800;background:var(--g1);-webkit-background-clip:text;-webkit-text-fill-color:transparent;display:flex;align-items:center;gap:0.5rem}
     .nl{display:flex;gap:2rem;list-style:none}
-    .nl a{color:var(--ts);text-decoration:none;font-weight:500;font-size:0.9rem;transition:color 0.3s;position:relative}
+    .nl a{color:var(--ts);text-decoration:none;font-weight:500;font-size:0.9rem;position:relative}
     .nl a::after{content:'';position:absolute;bottom:-4px;left:0;width:0;height:2px;background:var(--a);transition:width 0.3s}
     .nl a:hover{color:var(--a)}.nl a:hover::after{width:100%}
     section{padding:6rem 2rem;position:relative;z-index:1}
-    .hero{min-height:100vh;display:flex;align-items:center;justify-content:center}
-    .hc{max-width:1200px;width:100%;text-align:center}
-    .hb{display:inline-flex;align-items:center;gap:0.5rem;background:rgba(255,153,0,0.1);border:1px solid rgba(255,153,0,0.3);padding:0.5rem 1.2rem;border-radius:100px;font-size:0.85rem;color:var(--a);margin-bottom:1.5rem}
-    .hb .p{width:8px;height:8px;background:var(--a);border-radius:50%;animation:pulse 2s infinite}
-    @keyframes pulse{0%,100%{opacity:1}50%{opacity:0.5;transform:scale(1.5)}}
-    h1{font-size:clamp(2.5rem,5vw,4rem);font-weight:900;line-height:1.1;margin-bottom:1.5rem}
+    .hero{min-height:100vh;display:flex;align-items:center}
+    .hc{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center}
+    .hb{display:inline-flex;align-items:center;gap:0.5rem;background:rgba(255,153,0,0.1);border:1px solid rgba(255,153,0,0.3);padding:0.5rem 1rem;border-radius:100px;font-size:0.85rem;color:var(--a);margin-bottom:1.5rem}
+    h1{font-size:clamp(2.5rem,5vw,3.8rem);font-weight:900;line-height:1.1;margin-bottom:1.5rem}
     h1 .h{background:var(--g1);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
-    .hd{font-size:1.2rem;color:var(--ts);margin-bottom:2rem;max-width:600px;margin-left:auto;margin-right:auto}
-    .btns{display:flex;gap:1rem;justify-content:center}
-    .btn{padding:1rem 2rem;border-radius:12px;font-weight:600;font-size:1rem;text-decoration:none;display:inline-flex;align-items:center;gap:0.5rem;transition:all 0.3s;cursor:pointer;border:none}
+    .hd{font-size:1.15rem;color:var(--ts);margin-bottom:2rem}
+    .btn{padding:1rem 2rem;border-radius:12px;font-weight:600;font-size:1rem;text-decoration:none;display:inline-flex;align-items:center;gap:0.5rem;transition:all 0.3s;border:none}
     .btn-p{background:var(--g1);color:#000;box-shadow:0 4px 20px var(--ag)}.btn-p:hover{transform:translateY(-3px);box-shadow:0 8px 30px var(--ag)}
-    .btn-s{background:transparent;color:var(--t);border:1px solid var(--b)}.btn-s:hover{border-color:var(--a);color:var(--a)}
+    .btn-s{background:transparent;color:var(--t);border:2px solid var(--b)}.btn-s:hover{border-color:var(--a)}
     .st{text-align:center;margin-bottom:4rem}
     .st h2{font-size:2.5rem;font-weight:800;margin-bottom:1rem}
     .st p{color:var(--ts);font-size:1.1rem;max-width:600px;margin:0 auto}
     .sg{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:2rem}
-    .sc{background:var(--card);border:1px solid var(--b);border-radius:20px;padding:2rem;transition:all 0.4s;overflow:hidden}
+    .sc{background:var(--card);border:1px solid var(--b);border-radius:20px;padding:2rem;transition:all 0.4s}
     .sc:hover{transform:translateY(-5px);border-color:var(--a);box-shadow:0 10px 40px rgba(255,153,0,0.1)}
-    .sc .icon{width:50px;height:50px;border-radius:12px;display:flex;align-items:center;justify-content:center;margin-bottom:1.2rem}
-    .sc .icon.c1{background:var(--g1)}.sc .icon.c2{background:var(--g2)}.sc .icon.c3{background:linear-gradient(135deg,#8b5cf6,#6366f1)}
-    .sc h3{font-size:1.3rem;margin-bottom:0.8rem;font-weight:700}
-    .sc p{color:var(--ts);font-size:0.95rem}
-    .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;max-width:1200px;margin:0 auto}
-    .step{text-align:center;padding:2rem}
-    .step-num{width:60px;height:60px;border-radius:50%;background:var(--g1);display:flex;align-items:center;justify-content:center;font-size:1.5rem;font-weight:800;color:#000;margin:0 auto 1rem}
-    .step h3{font-size:1.2rem;margin-bottom:0.5rem}
-    .step p{color:var(--ts)}
+    .tabs{display:flex;justify-content:center;gap:1rem;margin-bottom:3rem;flex-wrap:wrap}
+    .tab{padding:0.8rem 1.5rem;border-radius:12px;background:var(--card);border:1px solid var(--b);color:var(--ts);cursor:pointer;transition:all 0.3s;font-weight:500}
+    .tab.active,.tab:hover{background:var(--g1);color:#000;border-color:var(--a)}
+    .code-box{background:var(--bg2);border-radius:16px;overflow:hidden;font-family:monospace;font-size:0.85rem}
+    .code-h{padding:0.8rem 1rem;background:rgba(255,255,255,0.03);border-bottom:1px solid var(--b);display:flex;gap:0.4rem}
+    .dot{width:10px;height:10px;border-radius:50%}.r{background:#ff5f57}.y{background:#febc2e}.g{background:#28c840}
+    .code-b{padding:1.2rem;min-height:200px}.code-b div{margin-bottom:0.3rem}
+    .cm{color:var(--ts)}.cr{color:var(--a)}.cg{color:#00d4aa}.cb{color:#8b5cf6}
+    .cta{margin-top:1.5rem;display:flex;gap:1rem}
     .contact-container{max-width:800px;margin:0 auto;background:var(--card);border:1px solid var(--b);border-radius:24px;padding:3rem;text-align:center}
     .contact-container h2{font-size:2rem;margin-bottom:1rem}
     .contact-container>p{color:var(--ts);margin-bottom:2rem}
     .cl{display:flex;justify-content:center;gap:1.5rem;flex-wrap:wrap}
     .cl a{display:flex;align-items:center;gap:0.5rem;background:var(--bg2);border:1px solid var(--b);padding:1rem 1.5rem;border-radius:12px;color:var(--t);text-decoration:none;font-weight:500;transition:all 0.3s}
-    .cl a:hover{border-color:var(--a);color:var(--a)}
+    .cl a:hover{border-color:var(--a)}
     footer{padding:2rem;text-align:center;color:var(--ts);border-top:1px solid var(--b);position:relative;z-index:1}
     footer .aw{color:var(--a);font-weight:600}
-    @media(max-width:1024px){.sg,.steps{grid-template-columns:repeat(2,1fr)}}
-    @media(max-width:768px){.nl{display:none}.sg,.steps{grid-template-columns:1fr}}
+    @media(max-width:1024px){.hc{grid-template-columns:1fr;text-align:center}.sg{grid-template-columns:repeat(2,1fr)}}
+    @media(max-width:768px){.nl{display:none}.sg{grid-template-columns:1fr}}
   </style>
 </head>
 <body>
@@ -69,79 +65,119 @@
 <div class="orb o1"></div>
 <div class="orb o2"></div>
 <nav>
-  <div class="l"><svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>CloudFounder</div>
+  <div class="l">CloudFounder</div>
   <ul class="nl">
-    <li><a href="#features">Features</a></li>
-    <li><a href="#about">About</a></li>
-    <li><a href="#stack">Tech Stack</a></li>
+    <li><a href="#product">Product</a></li>
+    <li><a href="#code">Code</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
 </nav>
 
 <section class="hero">
   <div class="hc">
-    <div class="hb"><span class="p"></span>Applied for AWS Founders Program</div>
-    <h1>Scalable Cloud Solutions for <span class="h">Modern Business</span></h1>
-    <p class="hd">We build enterprise-ready, cost-efficient cloud infrastructure on AWS — serverless, AI-powered, and built for growth.</p>
-    <div class="btns">
-      <a href="#contact" class="btn btn-p">Get Started</a>
-      <a href="#features" class="btn btn-s">Explore Features</a>
+    <div><div class="hb">Applied for AWS Activate</div>
+    <h1>The Serverless <span class="h">API Platform</span></h1>
+    <p class="hd">A production-ready REST API infrastructure built on AWS Lambda, API Gateway, and DynamoDB. Auto-scaling, secure, and cost-effective.</p>
+    <div class="cta">
+      <a href="https://github.com/sforsa242-source/aws-serverless-api" class="btn btn-p">View on GitHub</a>
+      <a href="#product" class="btn btn-s">Features</a>
     </div>
+  </div>
+  <div class="code-box">
+    <div class="code-h"><span class="dot r"></span><span class="dot y"></span><span class="dot g"></span></div>
+    <div class="code-b">
+      <div><span class="cm"># serverless.yml</span></div>
+      <div><span class="cr">service</span>: aws-serverless-api</div>
+      <div><span class="cr">provider</span>:</div>
+      <div><span class="cb">  name</span>: aws</div>
+      <div><span class="cb">  runtime</span>: python3.12</div>
+      <div><span class="cb">  region</span>: us-east-1</div>
+      <div><span class="cr">functions</span>:</div>
+      <div><span class="cb">  api</span>:</div>
+      <div><span class="cb">    handler</span>: handler.handler</div>
+      <div><span class="cb">    events</span>:</div>
+      <div><span class="cb">      - httpApi: <span class="cg">'/*'</span></span></div>
+      <div><span class="cm"># Scalable. Secure. Serverless.</span></div>
+    </div>
+  </div>
+</div></section>
+
+<section id="product" style="background:var(--bg2)">
+  <div class="st"><h2>Why This Platform?</h2><p>Built from real-world production experience with open-source code.</p></div>
+  <div class="sg">
+    <div class="sc"><h3>⚡ Auto-Scaling</h3><p>Handles 10K+ requests/sec automatically. No servers to manage — AWS Lambda scales on demand, you pay per request.</p></div>
+    <div class="sc"><h3>🔒 Built-in Security</h3><p>CIS benchmark compliant IAM, encryption at rest, WAF integration, and automated vulnerability scanning via open-source scanner.</p></div>
+    <div class="sc"><h3>📦 Infrastructure as Code</h3><p>Full Terraform modules for VPC, S3, DynamoDB included. Deploy with CI/CD pipelines (GitHub Actions + OIDC).</p></div>
+    <div class="sc"><h3>📊 Real-Time Monitoring</h3><p>CloudWatch dashboards + SNS alerts for all critical metrics. Automated compliance scanning every deployment.</p></div>
+    <div class="sc"><h3>🐍 Python + Node.js</h3><p>Multi-runtime support with Python 3.12 and Node.js 20. Clean separation of concerns, tested with pytest.</p></div>
+    <div class="sc"><h3>☁️ Multi-Region</h3><p>Deploy to us-east-1, eu-west-1, or any region. CloudFront CDN + DynamoDB global tables for low latency worldwide.</p></div>
   </div>
 </section>
 
-<section id="features">
-  <div class="st"><h2>Core Solutions</h2><p>Production-ready cloud services designed for scale, security, and performance.</p></div>
+<section id="code">
+  <div class="st"><h2>Open Source Modules</h2><p>Every component is available on GitHub. Transparent, auditable, and reusable.</p></div>
   <div class="sg">
     <div class="sc">
-      <div class="icon c1"><svg width="24" height="24" viewBox="0 0 24 24" fill="white"><path d="M19 5.5h-2.5V3h-3v2.5H11V3H8v2.5H5.5A2.5 2.5 0 003 8v12.5A2.5 2.5 0 005.5 23h13a2.5 2.5 0 002.5-2.5V8A2.5 2.5 0 0019 5.5z"/></svg></div>
-      <h3>Serverless API Platform</h3>
-      <p>REST API infrastructure using API Gateway, Lambda, and DynamoDB. Auto-scaling to 10K+ requests per second with pay-per-use pricing.</p>
+      <div style="display:flex;gap:0.5rem;margin-bottom:0.8rem;flex-wrap:wrap">
+        <span style="background:rgba(255,153,0,0.1);color:var(--a);padding:0.2rem 0.6rem;border-radius:100px;font-size:0.75rem">Python</span>
+        <span style="background:rgba(0,212,170,0.1);color:#00d4aa;padding:0.2rem 0.6rem;border-radius:100px;font-size:0.75rem">Serverless</span>
+      </div>
+      <h3 style="font-size:1rem;margin-bottom:0.3rem">aws-serverless-api</h3>
+      <p style="font-size:0.85rem;color:var(--ts);margin-bottom:0.8rem">REST API with Lambda, API Gateway, DynamoDB</p>
+      <a href="https://github.com/sforsa242-source/aws-serverless-api" style="color:var(--a);font-size:0.85rem;text-decoration:none">View →</a>
     </div>
     <div class="sc">
-      <div class="icon c2"><svg width="24" height="24" viewBox="0 0 24 24" fill="white"><path d="M19.35 10.04A7.49 7.49 0 0012 4C9.11 4 6.6 5.64 5.35 8.04A5.994 5.994 0 000 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96z"/></svg></div>
-      <h3>AI-Powered Analytics</h3>
-      <p>Real-time data processing with Kinesis and SageMaker for predictive analytics and automated business intelligence reporting.</p>
+      <div style="display:flex;gap:0.5rem;margin-bottom:0.8rem;flex-wrap:wrap">
+        <span style="background:rgba(139,92,246,0.1);color:#8b5cf6;padding:0.2rem 0.6rem;border-radius:100px;font-size:0.75rem">Security</span>
+        <span style="background:rgba(255,153,0,0.1);color:var(--a);padding:0.2rem 0.6rem;border-radius:100px;font-size:0.75rem">Python</span>
+      </div>
+      <h3 style="font-size:1rem;margin-bottom:0.3rem">aws-security-scanner</h3>
+      <p style="font-size:0.85rem;color:var(--ts);margin-bottom:0.8rem">CIS Benchmark scanner for IAM, S3, EC2, CloudTrail</p>
+      <a href="https://github.com/sforsa242-source/aws-security-scanner" style="color:var(--a);font-size:0.85rem;text-decoration:none">View →</a>
     </div>
     <div class="sc">
-      <div class="icon c3"><svg width="24" height="24" viewBox="0 0 24 24" fill="white"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/></svg></div>
-      <h3>Multi-Account Security</h3>
-      <p>Centralized security monitoring and automated incident response with IAM, GuardDuty, and Security Hub across AWS organizations.</p>
+      <div style="display:flex;gap:0.5rem;margin-bottom:0.8rem;flex-wrap:wrap">
+        <span style="background:rgba(0,212,170,0.1);color:#00d4aa;padding:0.2rem 0.6rem;border-radius:100px;font-size:0.75rem">IaC</span>
+        <span style="background:rgba(255,153,0,0.1);color:var(--a);padding:0.2rem 0.6rem;border-radius:100px;font-size:0.75rem">HCL</span>
+      </div>
+      <h3 style="font-size:1rem;margin-bottom:0.3rem">aws-terraform-modules</h3>
+      <p style="font-size:0.85rem;color:var(--ts);margin-bottom:0.8rem">Reusable Terraform modules for VPC, S3, DynamoDB</p>
+      <a href="https://github.com/sforsa242-source/aws-terraform-modules" style="color:var(--a);font-size:0.85rem;text-decoration:none">View →</a>
+    </div>
+    <div class="sc">
+      <div style="display:flex;gap:0.5rem;margin-bottom:0.8rem;flex-wrap:wrap">
+        <span style="background:rgba(0,212,170,0.1);color:#00d4aa;padding:0.2rem 0.6rem;border-radius:100px;font-size:0.75rem">CI/CD</span>
+        <span style="background:rgba(139,92,246,0.1);color:#8b5cf6;padding:0.2rem 0.6rem;border-radius:100px;font-size:0.75rem">YAML</span>
+      </div>
+      <h3 style="font-size:1rem;margin-bottom:0.3rem">aws-cicd-pipeline</h3>
+      <p style="font-size:0.85rem;color:var(--ts);margin-bottom:0.8rem">Multi-stage CI/CD pipeline with GitHub Actions, OIDC, Terraform</p>
+      <a href="https://github.com/sforsa242-source/aws-cicd-pipeline" style="color:var(--a);font-size:0.85rem;text-decoration:none">View →</a>
+    </div>
+    <div class="sc">
+      <div style="display:flex;gap:0.5rem;margin-bottom:0.8rem;flex-wrap:wrap">
+        <span style="background:rgba(255,153,0,0.1);color:var(--a);padding:0.2rem 0.6rem;border-radius:100px;font-size:0.75rem">Monitoring</span>
+        <span style="background:rgba(0,212,170,0.1);color:#00d4aa;padding:0.2rem 0.6rem;border-radius:100px;font-size:0.75rem">Terraform</span>
+      </div>
+      <h3 style="font-size:1rem;margin-bottom:0.3rem">aws-monitoring-dashboard</h3>
+      <p style="font-size:0.85rem;color:var(--ts);margin-bottom:0.8rem">CloudWatch dashboards and SNS alerts with Terraform</p>
+      <a href="https://github.com/sforsa242-source/aws-monitoring-dashboard" style="color:var(--a);font-size:0.85rem;text-decoration:none">View →</a>
+    </div>
+    <div class="sc">
+      <div style="display:flex;gap:0.5rem;margin-bottom:0.8rem;flex-wrap:wrap">
+        <span style="background:rgba(139,92,246,0.1);color:#8b5cf6;padding:0.2rem 0.6rem;border-radius:100px;font-size:0.75rem">Serverless</span>
+        <span style="background:rgba(255,153,0,0.1);color:var(--a);padding:0.2rem 0.6rem;border-radius:100px;font-size:0.75rem">Python</span>
+      </div>
+      <h3 style="font-size:1rem;margin-bottom:0.3rem">serverless-api-core</h3>
+      <p style="font-size:0.85rem;color:var(--ts);margin-bottom:0.8rem">Core library for serverless API architecture</p>
+      <a href="https://github.com/sforsa242-source/serverless-api-core" style="color:var(--a);font-size:0.85rem;text-decoration:none">View →</a>
     </div>
   </div>
 </section>
 
-<section id="about" style="background:var(--bg2)">
-  <div class="st"><h2>Why Choose Us</h2><p>We focus on delivering reliable, secure, and cost-optimized cloud infrastructure.</p></div>
-  <div class="sg">
-    <div class="sc"><h3>Reliability</h3><p>99.99% uptime SLA on critical infrastructure with multi-region failover and automated disaster recovery planning.</p></div>
-    <div class="sc"><h3>Security First</h3><p>Zero-trust architecture with end-to-end encryption, automated compliance checks, and continuous monitoring of all services.</p></div>
-    <div class="sc"><h3>Cost Efficiency</h3><p>Serverless-first approach minimizes idle costs. Pay only for what you use with auto-scaling and resource optimization.</p></div>
-  </div>
-</section>
-
-<section id="how">
-  <div class="st"><h2>How We Work</h2><p>From concept to deployment, we ensure a smooth journey.</p></div>
-  <div class="steps">
-    <div class="step"><div class="step-num">1</div><h3>Consult & Plan</h3><p>We analyze your needs and design a tailored cloud architecture on AWS that scales with your business.</p></div>
-    <div class="step"><div class="step-num">2</div><h3>Build & Deploy</h3><p>We build using Infrastructure as Code (CDK/Terraform) with automated CI/CD pipelines for zero-downtime releases.</p></div>
-    <div class="step"><div class="step-num">3</div><h3>Monitor & Optimize</h3><p>24/7 monitoring with CloudWatch, real-time alerts, and continuous cost optimization to keep your infrastructure lean.</p></div>
-  </div>
-</section>
-
-<section id="stack" style="background:var(--bg2)">
-  <div class="st"><h2>Technology Stack</h2><p>Powered by AWS services and modern cloud-native tools</p></div>
-  <div class="sg">
-    <div class="sc"><div class="icon c1"><svg width="24" height="24" viewBox="0 0 24 24" fill="white"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg></div><h3>Compute & Serverless</h3><p>AWS Lambda, EC2, ECS, EKS, API Gateway</p></div>
-    <div class="sc"><div class="icon c2"><svg width="24" height="24" viewBox="0 0 24 24" fill="white"><path d="M19.35 10.04A7.49 7.49 0 0012 4C9.11 4 6.6 5.64 5.35 8.04A5.994 5.994 0 000 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96z"/></svg></div><h3>Data & AI</h3><p>Amazon S3, DynamoDB, RDS, SageMaker, Bedrock</p></div>
-    <div class="sc"><div class="icon c3"><svg width="24" height="24" viewBox="0 0 24 24" fill="white"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/></svg></div><h3>DevOps & Security</h3><p>Terraform, AWS CDK, CodePipeline, IAM, GuardDuty</p></div>
-  </div>
-</section>
-
-<section id="contact">
+<section id="contact" style="background:var(--bg2)">
   <div class="contact-container">
-    <h2>Ready to Scale?</h2>
-    <p>Let's discuss how we can optimize your cloud infrastructure and accelerate your growth.</p>
+    <h2>Interested in the Platform?</h2>
+    <p>The full source code is available on GitHub. Fork it, deploy it, customize it.</p>
     <div class="cl">
       <a href="https://github.com/sforsa242-source"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>GitHub</a>
       <a href="mailto:sforsa242@gmail.com"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>sforsa242@gmail.com</a>
